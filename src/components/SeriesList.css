@@ -1,0 +1,60 @@
+/* Container principal pour la liste des séries */
+.series-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Style pour chaque carte de série */
+  .serie-card {
+    width: 200px; /* Taille de la carte */
+    background-color: #fff; /* Fond blanc */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 10px; /* Coins arrondis */
+    overflow: hidden; /* Cache les éléments qui débordent */
+    transition: transform 0.3s, box-shadow 0.3s; /* Effet de transition lors du survol */
+    cursor: pointer; /* Curseur en mode pointer pour la clicabilité */
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour les cartes */
+  }
+  
+  /* Animation de survol */
+  .serie-card:hover {
+    transform: translateY(-5px); /* Effet de montée au survol */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+  }
+  
+  /* Style pour le titre de la série */
+  .serie-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Couleur sombre pour le texte */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  /* Image de la série (affiche une image carré ou rectangulaire) */
+  .serie-card img {
+    width: 100%; /* L'image prend toute la largeur de la carte */
+    height: auto; /* La hauteur s'ajuste automatiquement */
+    border-radius: 5px;
+    margin-bottom: 10px; /* Espacement en dessous de l'image */
+  }
+  
+  /* Texte de résumé */
+  .serie-card p {
+    font-size: 0.9rem;
+    color: #666; /* Couleur gris clair pour le texte */
+    line-height: 1.4;
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limite le nombre de lignes à 3 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
