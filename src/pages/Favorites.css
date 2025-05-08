@@ -1,0 +1,40 @@
+.favorites-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .favorites-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .favorite-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .favorite-card img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .favorite-card button {
+    margin-top: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .favorite-card button:hover {
+    background-color: #c82333;
+  }
+  

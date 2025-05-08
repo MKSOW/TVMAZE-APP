@@ -3,6 +3,9 @@ import SearchBar from '../components/SearchBar';
 import SeriesList from '../components/SeriesList';
 import { searchSeries } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
+import { saveSearchHistory, getSearchHistory, clearSearchHistory } from '../utils/localStorageHelpers';
+
+
 import './Home.css';
 
 
@@ -29,6 +32,18 @@ const Home = () => {
     fetchAllSeries();
   }, []);
 
+  const [history, setHistory] = useState([]);
+
+  const handleClearHistory = () => {
+    clearSearchHistory();
+    setHistory([]);
+  };
+  
+
+  useEffect(() => {
+    setHistory(getSearchHistory());
+  }, [results]);
+
   // Gestion de la recherche
   const handleSearch = async (query) => {
     if (!query) {
@@ -38,6 +53,8 @@ const Home = () => {
     }
 
     try {
+      // Enregistrer l'historique de recherche dans le localStorage
+      saveSearchHistory(query);
       const data = await searchSeries(query);
       setResults(data);
       setIsSearching(true);
@@ -49,6 +66,7 @@ const Home = () => {
   const handleSelect = (id) => {
     navigate(`/serie/${id}`);
   };
+  
 
   // Pagination
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -75,8 +93,27 @@ const Home = () => {
     <div className="home">
       <h1>Recherche de séries TV</h1>
       <SearchBar onSearch={handleSearch} />
-      <SeriesList results={currentItems} onSelect={handleSelect} />
+  
+      {/* Historique des recherches */}
+      <div className="search-history">
+  <div className="history-header">
+    <h2>Recherches récentes</h2>
+    {history.length > 0 && (
+      <button onClick={handleClearHistory} className="clear-btn">Effacer</button>
+    )}
+  </div>
+  <ul>
+    {history.map((item, index) => (
+      <li key={index} onClick={() => handleSearch(item)}>
+        {item}
+      </li>
+    ))}
+  </ul>
+</div>
 
+  
+      <SeriesList results={currentItems} onSelect={handleSelect} />
+  
       {/* Pagination */}
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
@@ -89,6 +126,7 @@ const Home = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Home;

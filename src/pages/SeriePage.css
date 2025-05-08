@@ -1,155 +1,124 @@
-/* Style général de la page */
 .serie-page {
-  font-family: 'Segoe UI', sans-serif;
-  color: #333;
   padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
+/* En-tête de la série */
 .header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 30px;
+  gap: 20px;
 }
 
 .header img {
   width: 100%;
-  height: auto;
-  max-height: 500px;
+  max-height: 400px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .info {
-  margin-top: 20px;
+  padding: 10px 0;
 }
 
-.info h1 {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  margin-bottom: 15px;
+h1, h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
-.info p {
-  font-size: 1rem;
-  color: #555;
-  margin: 5px 0;
-}
-
-.info strong {
-  color: #2c3e50;
-}
-
-/* Saison et épisodes */
+/* Cartes de saison */
 .season-block {
   margin-bottom: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.card {
-  background-color: #f9f9f9;
+.season-block .card {
+  background-color: #f7f7f7;
   padding: 15px;
-  border-radius: 10px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 100%;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
   border-radius: 8px;
 }
 
-.card h3 {
-  font-size: 1.5rem;
-  margin: 10px 0;
-  color: #2c3e50;
+.season-block .card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 
-.card p {
-  font-size: 1rem;
-  color: #7f8c8d;
-}
-
+/* Liste des épisodes */
 .episode-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  margin-top: 20px;
 }
 
 .episode-grid .card {
-  width: 100%;
-  height: auto;
-}
-
-.episode-grid h4 {
-  font-size: 1.1rem;
-  margin: 10px 0;
-  color: #2c3e50;
-}
-
-.episode-grid p {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-}
-
-.episode-grid div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.episode-grid div img {
-  width: 100%;
-  height: auto;
-  max-width: 200px;
+  background-color: #e9e9e9;
+  padding: 15px;
   border-radius: 8px;
+}
+
+.episode-grid .card img {
+  width: 100%;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
 
-/* Cast */
+/* Grille des acteurs */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .card-grid .card {
-  text-align: center;
+  background-color: #f0f0f0;
   padding: 15px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
 }
 
-.card-grid img {
+.card-grid .card img {
   width: 100%;
-  height: auto;
-  max-width: 150px;
-  border-radius: 50%;
+  border-radius: 6px;
+  object-fit: cover;
+  height: 220px;
   margin-bottom: 10px;
 }
 
-.card-grid h4 {
-  font-size: 1.2rem;
-  color: #2c3e50;
+/* Media queries */
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+  }
+
+  .header img {
+    width: 50%;
+    max-height: 500px;
+  }
+
+  .info {
+    width: 50%;
+    padding-left: 20px;
+  }
+
+  .episode-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .episode-grid .card {
+    width: 48%;
+  }
 }
 
-.card-grid p {
-  font-size: 1rem;
-  color: #7f8c8d;
-}
+@media (min-width: 1024px) {
+  .episode-grid .card {
+    width: 31%;
+  }
 
-/* Styles d'erreur et de chargement */
-.error, .loading {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #e74c3c;
-  margin-top: 40px;
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }

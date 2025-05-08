@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
-import './SearchBar.css'; // Assurez-vous d'avoir ce fichier CSS pour le style
+import './SearchBar.css';
 
 const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query.trim()) {
-      onSearch(query);
-    }
+    if (query.trim() === '') return;
+
+    onSearch(query);
+    setQuery(''); // <-- vide le champ après recherche
   };
 
   return (
     <form onSubmit={handleSubmit} className="search-bar">
       <input
         type="text"
-        placeholder="Rechercher une série..."
         value={query}
+        placeholder="Rechercher une série..."
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button type="submit">Rechercher</button>
+      <button type="submit">🔍</button>
     </form>
   );
 };
